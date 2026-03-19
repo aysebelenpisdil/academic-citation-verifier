@@ -1,0 +1,23 @@
+{
+  "name": "scriptlerle-atif",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check-port": "node scripts/check-port-8000.js",
+    "free-port": "node scripts/free-port-8000.js",
+    "test": "jest --config jest.config.cjs",
+    "test:backend": "jest --config jest.config.cjs --selectProjects backend-unit backend-integration",
+    "test:frontend": "jest --config jest.config.cjs --selectProjects frontend"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-react": "^7.28.5",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "babel-jest": "^30.3.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "supertest": "^7.2.2"
+  }
+}
