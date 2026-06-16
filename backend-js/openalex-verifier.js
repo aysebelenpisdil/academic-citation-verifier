@@ -56,7 +56,7 @@ function evaluateOpenAlexWork(work, citationData) {
   const foundAuthors = (work.authorships || []).map(a => a.author?.display_name).filter(Boolean);
   const authorOk = checkAuthorMatch(citationData.authors || [], foundAuthors);
 
-  const foundJournal = (work.primary_location?.source || {}).display_name || '';
+  const foundJournal = work.primary_location?.source?.display_name || '';
   const citationJournal = citationData.journal || '';
   const journalOk = !citationJournal || !foundJournal || ratio(cleanText(citationJournal), cleanText(foundJournal)) >= 75;
 

@@ -123,23 +123,11 @@ function buildWebMismatch(scraped, cand, note, partialMeta) {
   };
 }
 
-async function checkCandidateMatch(cand, citationData, cleanTitle) {
-  let urlToUse = cand.url;
-  if (isDergiparkDownloadUrl(urlToUse)) {
-    const resolved = await resolveDergiparkArticleUrl(urlToUse, cleanTitle);
-    if (resolved) urlToUse = resolved;
-    else return { skip: true };
-  }
-
-  const scraped = await scrapeMetadata(urlToUse);
-  if (!scraped) return { skip: true };
-
+function checkMetadataMatch(scraped, cand, citationData) {
   const foundAuthors = scraped.authors || [];
   const foundJournal = scraped.journal || '';
   const foundYear = scraped.year;
-  const citationAuthors = citationData.authors || [];
-  const citationJournal = citationData.journal || '';
-  const citationYear = citationData.year;
+  const { authors: citationAuthors = [], journal: citationJournal = '', year: citationYear } = citationData;
 
   if (citationAuthors.length && !foundAuthors.length) {
     return buildWebMismatch(scraped, cand, 'Başlık eşleşti ancak yazar bilgisi web sayfasından çıkarılamadı. Manuel kontrol gerekli.', { authors: [], year: foundYear, journal: foundJournal });
@@ -183,6 +171,18 @@ async function checkCandidateMatch(cand, citationData, cleanTitle) {
       found_metadata: { title: scraped.title, authors: foundAuthors.slice(0, 5), year: foundYear, journal: foundJournal }
     }
   };
+}
+
+async function checkCandidateMatch(cand, citationData, cleanTitle) {
+  let urlToUse = cand.url;
+  if (isDergiparkDownloadUrl(urlToUse)) {
+    const resolved = await resolveDergiparkArticleUrl(urlToUse, cleanTitle);
+    if (resolved) urlToUse = resolved;
+    else return { skip: true };
+  }
+  const scraped = await scrapeMetadata(urlToUse);
+  if (!scraped) return { skip: true };
+  return checkMetadataMatch(scraped, cand, citationData);
 }
 
 export async function verifyViaWeb(citationData) {

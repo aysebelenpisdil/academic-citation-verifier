@@ -84,6 +84,19 @@ function scoreCrossrefItem(item, cleanTitle, citationData) {
   return { score, foundTitle, foundAuthors, foundJournal, foundYear, authorOk, journalOk, yearOk };
 }
 
+function buildCrossrefMismatch(ev) {
+  const reasons = [];
+  if (!ev.authorOk) reasons.push('Yazar uyuşmazlığı');
+  if (!ev.journalOk) reasons.push('Dergi uyuşmazlığı');
+  if (!ev.yearOk) reasons.push('Yıl uyuşmazlığı');
+  return {
+    source: 'CrossRef (Metadata Uyuşmazlığı)',
+    is_verified: false,
+    note: `Benzer başlık (%${ev.score}) bulundu ancak: ${reasons.join(', ')}`,
+    found_metadata: { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear }
+  };
+}
+
 function buildCrossrefVerified(item, ev, includeAuthors) {
   const meta = { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear };
   if (includeAuthors) meta.authors = ev.foundAuthors.slice(0, 3).map(a => `${a.given || ''} ${a.family || ''}`.trim());
@@ -107,16 +120,7 @@ async function checkCrossrefTitle(citationData) {
       const ev = scoreCrossrefItem(item, cleanTitle, citationData);
       if (ev.score < 85) continue;
       if (ev.authorOk && ev.journalOk && ev.yearOk) return buildCrossrefVerified(item, ev, true);
-      const reasons = [];
-      if (!ev.authorOk) reasons.push('Yazar uyuşmazlığı');
-      if (!ev.journalOk) reasons.push('Dergi uyuşmazlığı');
-      if (!ev.yearOk) reasons.push('Yıl uyuşmazlığı');
-      return {
-        source: 'CrossRef (Metadata Uyuşmazlığı)',
-        is_verified: false,
-        note: `Benzer başlık (%${ev.score}) bulundu ancak: ${reasons.join(', ')}`,
-        found_metadata: { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear }
-      };
+      return buildCrossrefMismatch(ev);
     }
 
     for (const item of items) {
