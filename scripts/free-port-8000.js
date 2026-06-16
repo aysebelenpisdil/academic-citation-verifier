@@ -2,7 +2,7 @@
 /**
  * Port 8000'i kullanan işlemi sonlandırır.
  */
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
 
 const PORT = 8000;
 

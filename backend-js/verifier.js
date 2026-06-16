@@ -11,7 +11,7 @@ function normalizeTurkish(text) {
   return text
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/ı/g, 'i')
+    .replaceAll('ı', 'i')
     .toLowerCase()
     .trim();
 }
@@ -19,40 +19,35 @@ function normalizeTurkish(text) {
 function cleanText(text) {
   if (!text) return '';
   let t = normalizeTurkish(text);
-  t = t.replace(/\n/g, ' ').replace(/\r/g, ' ');
+  t = t.replaceAll('\n', ' ').replaceAll('\r', ' ');
   t = t.replace(/\s+/g, ' ').trim();
   return t.replace(/[.,;:]+$/, '');
+}
+
+function isSignificantPart(p) {
+  return p.length > 2 && !['ve', 'and', 'et', 'al'].includes(p.toLowerCase());
+}
+
+function extractLastname(auth) {
+  const name = typeof auth === 'object' ? (auth.display_name || auth.family || auth.name || '') : String(auth);
+  const parts = normalizeTurkish(name).split(' ');
+  return parts.length ? parts[parts.length - 1] : null;
+}
+
+function hasMatchingLastname(citLastnames, foundLastnames) {
+  return citLastnames.some(c => foundLastnames.some(f => ratio(c, f) > 85));
 }
 
 function checkAuthorMatch(citationAuthors, foundAuthors) {
   if (!citationAuthors?.length || !foundAuthors?.length) return true;
 
-  const citLastnames = [];
-  for (const auth of citationAuthors) {
-    const clean = normalizeTurkish(auth);
-    const parts = clean.split(' ').filter(p => p.length > 2 && !['ve', 'and', 'et', 'al'].includes(p.toLowerCase()));
-    if (parts.length) citLastnames.push(parts[parts.length - 1]);
-  }
+  const citLastnames = citationAuthors.map(auth => {
+    const parts = normalizeTurkish(auth).split(' ').filter(isSignificantPart);
+    return parts.length ? parts[parts.length - 1] : null;
+  }).filter(Boolean);
 
-  const foundLastnames = [];
-  for (const auth of foundAuthors) {
-    let name = '';
-    if (typeof auth === 'object') {
-      name = auth.display_name || auth.family || auth.name || '';
-    } else {
-      name = String(auth);
-    }
-    const clean = normalizeTurkish(name);
-    const parts = clean.split(' ');
-    if (parts.length) foundLastnames.push(parts[parts.length - 1]);
-  }
-
-  for (const c of citLastnames) {
-    for (const f of foundLastnames) {
-      if (ratio(c, f) > 85) return true;
-    }
-  }
-  return false;
+  const foundLastnames = foundAuthors.map(extractLastname).filter(Boolean);
+  return hasMatchingLastname(citLastnames, foundLastnames);
 }
 
 async function checkCrossrefDoi(doi) {
@@ -75,98 +70,58 @@ async function checkCrossrefDoi(doi) {
   }
 }
 
+function scoreCrossrefItem(item, cleanTitle, citationData) {
+  const foundTitle = item.title?.[0] || '';
+  const score = ratio(cleanTitle, cleanText(foundTitle));
+  const foundAuthors = item.author || [];
+  const authorOk = checkAuthorMatch(citationData.authors || [], foundAuthors);
+  const foundJournal = item['container-title']?.[0] || '';
+  const citationJournal = citationData.journal || '';
+  const journalOk = !citationJournal || !foundJournal || ratio(normalizeTurkish(citationJournal), normalizeTurkish(foundJournal)) >= 70;
+  const foundYear = item.published?.['date-parts']?.[0]?.[0];
+  const citationYear = citationData.year;
+  const yearOk = !citationYear || !foundYear || Math.abs(Number.parseInt(citationYear, 10) - foundYear) <= 2;
+  return { score, foundTitle, foundAuthors, foundJournal, foundYear, authorOk, journalOk, yearOk };
+}
+
+function buildCrossrefVerified(item, ev, includeAuthors) {
+  const meta = { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear };
+  if (includeAuthors) meta.authors = ev.foundAuthors.slice(0, 3).map(a => `${a.given || ''} ${a.family || ''}`.trim());
+  return { source: 'CrossRef', is_verified: true, url: item.URL, score: ev.score, found_metadata: meta };
+}
+
 async function checkCrossrefTitle(citationData) {
   const title = citationData?.title || '';
   if (title.length < 10) return null;
-
   const cleanTitle = cleanText(title);
+
   try {
     const { data } = await axios.get('https://api.crossref.org/works', {
       params: { 'query.bibliographic': title, rows: 3 },
       headers: { 'User-Agent': USER_AGENT },
       timeout: REQ_TIMEOUT
     });
-
     const items = data?.message?.items || [];
 
     for (const item of items) {
-      const foundTitle = item.title?.[0] || '';
-      const score = ratio(cleanTitle, cleanText(foundTitle));
-      if (score < 85) continue;
-
-      const foundAuthors = item.author || [];
-      const authorOk = checkAuthorMatch(citationData.authors || [], foundAuthors);
-
-      const foundJournal = item['container-title']?.[0] || '';
-      const citationJournal = citationData.journal || '';
-      let journalOk = true;
-      if (citationJournal && foundJournal) {
-        journalOk = ratio(normalizeTurkish(citationJournal), normalizeTurkish(foundJournal)) >= 70;
-      }
-
-      const foundYear = item.published?.['date-parts']?.[0]?.[0];
-      const citationYear = citationData.year;
-      let yearOk = true;
-      if (citationYear && foundYear) {
-        yearOk = Math.abs(parseInt(citationYear, 10) - foundYear) <= 2;
-      }
-
-      if (authorOk && journalOk && yearOk) {
-        return {
-          source: 'CrossRef',
-          is_verified: true,
-          url: item.URL,
-          score,
-          found_metadata: {
-            title: foundTitle,
-            journal: foundJournal,
-            year: foundYear,
-            authors: foundAuthors.slice(0, 3).map(a => `${a.given || ''} ${a.family || ''}`.trim())
-          }
-        };
-      }
-
+      const ev = scoreCrossrefItem(item, cleanTitle, citationData);
+      if (ev.score < 85) continue;
+      if (ev.authorOk && ev.journalOk && ev.yearOk) return buildCrossrefVerified(item, ev, true);
       const reasons = [];
-      if (!authorOk) reasons.push('Yazar uyuşmazlığı');
-      if (!journalOk) reasons.push('Dergi uyuşmazlığı');
-      if (!yearOk) reasons.push('Yıl uyuşmazlığı');
-
+      if (!ev.authorOk) reasons.push('Yazar uyuşmazlığı');
+      if (!ev.journalOk) reasons.push('Dergi uyuşmazlığı');
+      if (!ev.yearOk) reasons.push('Yıl uyuşmazlığı');
       return {
         source: 'CrossRef (Metadata Uyuşmazlığı)',
         is_verified: false,
-        note: `Benzer başlık (%${score}) bulundu ancak: ${reasons.join(', ')}`,
-        found_metadata: { title: foundTitle, journal: foundJournal, year: foundYear }
+        note: `Benzer başlık (%${ev.score}) bulundu ancak: ${reasons.join(', ')}`,
+        found_metadata: { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear }
       };
     }
 
     for (const item of items) {
-      const foundTitle = item.title?.[0] || '';
-      const score = ratio(cleanTitle, cleanText(foundTitle));
-      if (score < 75) continue;
-
-      const foundAuthors = item.author || [];
-      const authorOk = checkAuthorMatch(citationData.authors || [], foundAuthors);
-      const foundJournal = item['container-title']?.[0] || '';
-      const citationJournal = citationData.journal || '';
-      let journalOk = true;
-      if (citationJournal && foundJournal) {
-        journalOk = ratio(normalizeTurkish(citationJournal), normalizeTurkish(foundJournal)) >= 70;
-      }
-      const foundYear = item.published?.['date-parts']?.[0]?.[0];
-      const citationYear = citationData.year;
-      let yearOk = true;
-      if (citationYear && foundYear) {
-        yearOk = Math.abs(parseInt(citationYear, 10) - foundYear) <= 2;
-      }
-      if (authorOk && journalOk && yearOk) {
-        return {
-          source: 'CrossRef',
-          is_verified: true,
-          url: item.URL,
-          score,
-          found_metadata: { title: foundTitle, journal: foundJournal, year: foundYear }
-        };
-      }
+      const ev = scoreCrossrefItem(item, cleanTitle, citationData);
+      if (ev.score >= 75 && ev.authorOk && ev.journalOk && ev.yearOk) return buildCrossrefVerified(item, ev, false);
     }
   } catch {
     return null;

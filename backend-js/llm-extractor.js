@@ -24,7 +24,7 @@ function cleanCitationData(citation) {
   }
 
   if (cleaned.year) {
-    const match = cleaned.year.match(/\d{4}/);
+    const match = /\d{4}/.exec(cleaned.year);
     cleaned.year = match ? match[0] : null;
   }
 

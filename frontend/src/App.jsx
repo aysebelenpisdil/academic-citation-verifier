@@ -2,6 +2,12 @@ import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
 
+function getVerificationInfo(verification) {
+  if (verification?.is_verified) return { cardClass: 'verified', badgeClass: 'badge-success', label: '✅ DOĞRULANDI' };
+  if (verification?.found_metadata) return { cardClass: 'mismatch', badgeClass: 'badge-warning', label: '⚠️ UYUŞMAZLIK' };
+  return { cardClass: 'failed', badgeClass: 'badge-error', label: '❌ BULUNAMADI' };
+}
+
 const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
 function App() {
@@ -36,7 +42,7 @@ function App() {
     const k = 1024
     const sizes = ['Bytes', 'KB', 'MB']
     const i = Math.floor(Math.log(bytes) / Math.log(k))
-    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`
+    return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`
   }
 
   const handleUpload = async () => {
@@ -189,11 +195,13 @@ function App() {
 
           {result.citations && result.citations.length > 0 ? (
             <div className="citations-list">
-              {result.citations.map((cite, idx) => (
-                <div key={idx} className={`citation-card ${cite.verification?.is_verified ? 'verified' : cite.verification?.found_metadata ? 'mismatch' : 'failed'}`}>
+              {result.citations.map((cite, idx) => {
+                const verInfo = getVerificationInfo(cite.verification);
+                return (
+                <div key={cite.doi || cite.title || idx} className={`citation-card ${verInfo.cardClass}`}>
                   <div className="citation-header">
-                    <span className={`badge ${cite.verification?.is_verified ? 'badge-success' : cite.verification?.found_metadata ? 'badge-warning' : 'badge-error'}`}>
-                      {cite.verification?.is_verified ? '✅ DOĞRULANDI' : cite.verification?.found_metadata ? '⚠️ UYUŞMAZLIK' : '❌ BULUNAMADI'}
+                    <span className={`badge ${verInfo.badgeClass}`}>
+                      {verInfo.label}
                     </span>
                     {cite.verification?.source && <span className="source-tag">📍 {cite.verification.source}</span>}
                   </div>
@@ -257,7 +265,8 @@ function App() {
                     </details>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="no-citations">Atıf bulunamadı.</div>

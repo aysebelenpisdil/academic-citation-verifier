@@ -6,71 +6,66 @@ const REQ_TIMEOUT = 10000;
 
 function cleanText(text) {
   if (!text) return '';
-  return text.replace(/\n/g, ' ').replace(/\r/g, ' ').replace(/\t/g, ' ').replace(/\s+/g, ' ').trim();
+  return text.replaceAll('\n', ' ').replaceAll('\r', ' ').replaceAll('\t', ' ').replace(/\s+/g, ' ').trim();
+}
+
+function findIeeeAuthors($) {
+  const authors = [];
+  $('meta[name="citation_author"]').each((_, el) => {
+    const c = cleanText($(el).attr('content'));
+    if (c) authors.push(c);
+  });
+  if (authors.length) return authors;
+  $('a[href*="/author/"]').each((_, el) => {
+    const n = cleanText($(el).text());
+    if (n && n.length > 3) authors.push(n);
+  });
+  if (authors.length) return authors;
+  const jsonLd = $('script[type="application/ld+json"]').first().html();
+  if (jsonLd) {
+    try {
+      const d = JSON.parse(jsonLd);
+      const alist = d?.author;
+      if (Array.isArray(alist)) return alist.map(a => a?.name).filter(Boolean);
+      if (alist?.name) return [alist.name];
+    } catch {}
+  }
+  return authors;
+}
+
+function findIeeeYear($) {
+  const dateMeta = $('meta[name="citation_publication_date"]').attr('content') || $('meta[name="citation_year"]').attr('content');
+  if (dateMeta) {
+    const m = dateMeta.match(/\d{4}/);
+    if (m) return Number.parseInt(m[0], 10);
+  }
+  const dm = $('.doc-abstract-pubdate').text().match(/\d{4}/);
+  if (dm) return Number.parseInt(dm[0], 10);
+  let year = null;
+  $('meta').each((_, el) => {
+    const ym = ($(el).attr('content') || '').match(/\b(19|20)\d{2}\b/);
+    if (ym) year = Number.parseInt(ym[0], 10);
+    return !year;
+  });
+  return year;
 }
 
 async function scrapeIeee(url) {
-  if (url.includes('/abstract/document/')) {
-    url = url.replace('/abstract/document/', '/document/');
-  }
+  const resolvedUrl = url.includes('/abstract/document/')
+    ? url.replace('/abstract/document/', '/document/')
+    : url;
   try {
-    const { data } = await axios.get(url, { headers: { 'User-Agent': USER_AGENT }, timeout: REQ_TIMEOUT, responseType: 'text' });
+    const { data } = await axios.get(resolvedUrl, { headers: { 'User-Agent': USER_AGENT }, timeout: REQ_TIMEOUT, responseType: 'text' });
     const $ = cheerio.load(data);
-
-    let title = $('h1.document-title').text().trim() || $('meta[property="og:title"]').attr('content') || '';
-
-    let authors = [];
-    $('meta[name="citation_author"]').each((_, el) => {
-      const c = cleanText($(el).attr('content'));
-      if (c) authors.push(c);
-    });
-    if (!authors.length) {
-      $('a[href*="/author/"]').each((_, el) => {
-        const n = cleanText($(el).text());
-        if (n && n.length > 3) authors.push(n);
-      });
-    }
-    if (!authors.length) {
-      const jsonLd = $('script[type="application/ld+json"]').first().html();
-      if (jsonLd) {
-        try {
-          const d = JSON.parse(jsonLd);
-          const alist = d?.author;
-          if (Array.isArray(alist)) authors = alist.map(a => a?.name).filter(Boolean);
-          else if (alist?.name) authors = [alist.name];
-        } catch {}
-      }
-    }
-
-    let year = null;
-    const dateMeta = $('meta[name="citation_publication_date"]').attr('content') || $('meta[name="citation_year"]').attr('content');
-    if (dateMeta) {
-      const m = dateMeta.match(/\d{4}/);
-      if (m) year = parseInt(m[0], 10);
-    }
-    if (!year) {
-      const docDate = $('.doc-abstract-pubdate').text();
-      const m = docDate.match(/\d{4}/);
-      if (m) year = parseInt(m[0], 10);
-    }
-    if (!year) {
-      $('meta').each((_, el) => {
-        const c = $(el).attr('content') || '';
-        const ym = c.match(/\b(19|20)\d{2}\b/);
-        if (ym) year = parseInt(ym[0], 10);
-        return !year;
-      });
-    }
-
-    let journal = cleanText($('meta[name="citation_conference_title"]').attr('content')) ||
+    const title = $('h1.document-title').text().trim() || $('meta[property="og:title"]').attr('content') || '';
+    const journal = cleanText($('meta[name="citation_conference_title"]').attr('content')) ||
       cleanText($('meta[name="citation_journal_title"]').attr('content')) ||
       cleanText($('a.stats-document-abstract-publishedIn').text()) ||
       cleanText($('meta[name="citation_publisher"]').attr('content'));
-
     return {
       title: cleanText(title) || null,
-      authors: authors.slice(0, 10),
-      year,
+      authors: findIeeeAuthors($).slice(0, 10),
+      year: findIeeeYear($),
       journal: journal || null,
       source: 'IEEE Xplore'
     };
@@ -93,7 +88,7 @@ async function scrapeSciencedirect(url) {
     let year = null;
     const dateStr = $('meta[name="citation_publication_date"]').attr('content') || '';
     const ym = dateStr.match(/\d{4}/);
-    if (ym) year = parseInt(ym[0], 10);
+    if (ym) year = Number.parseInt(ym[0], 10);
     const journal = cleanText($('meta[name="citation_journal_title"]').attr('content')) || null;
 
     return {
@@ -130,7 +125,7 @@ async function scrapeDergipark(url) {
     let year = null;
     const dateStr = $('meta[name="citation_publication_date"]').attr('content') || '';
     const ym = dateStr.match(/\d{4}/);
-    if (ym) year = parseInt(ym[0], 10);
+    if (ym) year = Number.parseInt(ym[0], 10);
     const journal = cleanText($('meta[name="citation_journal_title"]').attr('content')) || null;
 
     return {
@@ -145,6 +140,18 @@ async function scrapeDergipark(url) {
   }
 }
 
+function findTezaraAuthor(text) {
+  for (const line of text.split('\n')) {
+    const m = line.match(/^\d*\.?\s*Yazar\s*:\s*(.+)/i);
+    if (m) {
+      const name = cleanText(m[1]);
+      if (name && name.length > 2) return [name];
+    }
+  }
+  const mm = text.match(/Yazar\s*:\s*([^\n]+)/i);
+  return mm ? [cleanText(mm[1])] : [];
+}
+
 async function scrapeTezara(url) {
   try {
     const { data } = await axios.get(url, { headers: { 'User-Agent': USER_AGENT }, timeout: REQ_TIMEOUT, responseType: 'text' });
@@ -152,26 +159,13 @@ async function scrapeTezara(url) {
     const text = $('body').text();
 
     let title = cleanText($('meta[property="og:title"]').attr('content')) || cleanText($('h1').first().text()) || '';
-    if (title && title.includes('|')) title = title.split('|')[0].trim();
+    if (title?.includes('|')) title = title.split('|')[0].trim();
 
-    const authors = [];
-    const lines = text.split('\n');
-    for (const line of lines) {
-      const m = line.match(/^\d*\.?\s*Yazar\s*:\s*(.+)/i);
-      if (m) {
-        const name = cleanText(m[1]);
-        if (name && name.length > 2) authors.push(name);
-        break;
-      }
-    }
-    if (!authors.length) {
-      const mm = text.match(/Yazar\s*:\s*([^\n]+)/i);
-      if (mm) authors.push(cleanText(mm[1]));
-    }
+    const authors = findTezaraAuthor(text);
 
     let year = null;
     const yearM = text.match(/(?:Yıl|Yil)\s*:\s*(\d{4})/i);
-    if (yearM) year = parseInt(yearM[1], 10);
+    if (yearM) year = Number.parseInt(yearM[1], 10);
 
     const univM = text.match(/Üniversite\s*:\s*([^\n]+)/i);
     const enstM = text.match(/Enstitü\s*:\s*([^\n]+)/i);
@@ -212,7 +206,7 @@ async function scrapeGeneric(url) {
       $('meta[name="citation_year"]').attr('content') ||
       $('meta[name="dc.date"]').attr('content') || '';
     const ym = dateStr.match(/\d{4}/);
-    if (ym) year = parseInt(ym[0], 10);
+    if (ym) year = Number.parseInt(ym[0], 10);
 
     const journal = cleanText($('meta[name="citation_journal_title"]').attr('content')) ||
       cleanText($('meta[name="citation_conference_title"]').attr('content')) ||
