@@ -46,6 +46,7 @@ function checkAuthorMatch(citationAuthors, foundAuthors) {
     return parts.length ? parts[parts.length - 1] : null;
   }).filter(Boolean);
 
+  if (!citLastnames.length) return true;
   const foundLastnames = foundAuthors.map(extractLastname).filter(Boolean);
   return hasMatchingLastname(citLastnames, foundLastnames);
 }
@@ -70,6 +71,10 @@ async function checkCrossrefDoi(doi) {
   }
 }
 
+const CROSSREF_TITLE_THRESHOLD = 82;
+
+// Başlık = var olma sinyali, yazar = gerçek/sahte ayırt edici sinyal.
+// Yıl ve dergi yumuşak sinyallerdir (preprint/konferans/yeniden yayın farkı), kesin red değil.
 function scoreCrossrefItem(item, cleanTitle, citationData) {
   const foundTitle = item.title?.[0] || '';
   const score = ratio(cleanTitle, cleanText(foundTitle));
@@ -77,30 +82,34 @@ function scoreCrossrefItem(item, cleanTitle, citationData) {
   const authorOk = checkAuthorMatch(citationData.authors || [], foundAuthors);
   const foundJournal = item['container-title']?.[0] || '';
   const citationJournal = citationData.journal || '';
-  const journalOk = !citationJournal || !foundJournal || ratio(normalizeTurkish(citationJournal), normalizeTurkish(foundJournal)) >= 70;
+  const journalSoftOk = !citationJournal || !foundJournal || ratio(normalizeTurkish(citationJournal), normalizeTurkish(foundJournal)) >= 70;
   const foundYear = item.published?.['date-parts']?.[0]?.[0];
   const citationYear = citationData.year;
-  const yearOk = !citationYear || !foundYear || Math.abs(Number.parseInt(citationYear, 10) - foundYear) <= 2;
-  return { score, foundTitle, foundAuthors, foundJournal, foundYear, authorOk, journalOk, yearOk };
+  const yearDiff = (citationYear && foundYear) ? Math.abs(Number.parseInt(citationYear, 10) - foundYear) : null;
+  return { score, foundTitle, foundAuthors, foundJournal, foundYear, authorOk, journalSoftOk, yearDiff };
 }
 
 function buildCrossrefMismatch(ev) {
-  const reasons = [];
-  if (!ev.authorOk) reasons.push('Yazar uyuşmazlığı');
-  if (!ev.journalOk) reasons.push('Dergi uyuşmazlığı');
-  if (!ev.yearOk) reasons.push('Yıl uyuşmazlığı');
   return {
-    source: 'CrossRef (Metadata Uyuşmazlığı)',
+    source: 'CrossRef (Yazar Uyuşmazlığı)',
     is_verified: false,
-    note: `Benzer başlık (%${ev.score}) bulundu ancak: ${reasons.join(', ')}`,
+    score: ev.score,
+    note: `Aynı başlıkta makale bulundu (%${ev.score}) ancak yazarlar atıftaki yazarlarla eşleşmiyor.`,
     found_metadata: { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear }
   };
 }
 
-function buildCrossrefVerified(item, ev, includeAuthors) {
-  const meta = { title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear };
-  if (includeAuthors) meta.authors = ev.foundAuthors.slice(0, 3).map(a => `${a.given || ''} ${a.family || ''}`.trim());
-  return { source: 'CrossRef', is_verified: true, url: item.URL, score: ev.score, found_metadata: meta };
+function buildCrossrefVerified(item, ev) {
+  const meta = {
+    title: ev.foundTitle, journal: ev.foundJournal, year: ev.foundYear,
+    authors: ev.foundAuthors.slice(0, 3).map(a => `${a.given || ''} ${a.family || ''}`.trim())
+  };
+  const notes = [];
+  if (!ev.journalSoftOk) notes.push('dergi adı farklı');
+  if (ev.yearDiff !== null && ev.yearDiff > 2) notes.push(`yıl farkı ${ev.yearDiff} (preprint/yeniden yayın olabilir)`);
+  const res = { source: 'CrossRef', is_verified: true, url: item.URL, score: ev.score, found_metadata: meta };
+  if (notes.length) res.note = `Doğrulandı. Bilgi: ${notes.join(', ')}.`;
+  return res;
 }
 
 async function checkCrossrefTitle(citationData) {
@@ -110,27 +119,28 @@ async function checkCrossrefTitle(citationData) {
 
   try {
     const { data } = await axios.get('https://api.crossref.org/works', {
-      params: { 'query.bibliographic': title, rows: 3 },
+      params: { 'query.bibliographic': title, rows: 5 },
       headers: { 'User-Agent': USER_AGENT },
       timeout: REQ_TIMEOUT
     });
     const items = data?.message?.items || [];
 
-    for (const item of items) {
-      const ev = scoreCrossrefItem(item, cleanTitle, citationData);
-      if (ev.score < 85) continue;
-      if (ev.authorOk && ev.journalOk && ev.yearOk) return buildCrossrefVerified(item, ev, true);
-      return buildCrossrefMismatch(ev);
+    const candidates = items
+      .map(item => ({ item, ev: scoreCrossrefItem(item, cleanTitle, citationData) }))
+      .filter(c => c.ev.score >= CROSSREF_TITLE_THRESHOLD);
+    if (!candidates.length) return null;
+
+    const authorMatches = candidates.filter(c => c.ev.authorOk);
+    if (authorMatches.length) {
+      authorMatches.sort((a, b) => b.ev.score - a.ev.score);
+      return buildCrossrefVerified(authorMatches[0].item, authorMatches[0].ev);
     }
 
-    for (const item of items) {
-      const ev = scoreCrossrefItem(item, cleanTitle, citationData);
-      if (ev.score >= 75 && ev.authorOk && ev.journalOk && ev.yearOk) return buildCrossrefVerified(item, ev, false);
-    }
+    candidates.sort((a, b) => b.ev.score - a.ev.score);
+    return buildCrossrefMismatch(candidates[0].ev);
   } catch {
     return null;
   }
-  return null;
 }
 
 export async function verifyCitation(citationData) {

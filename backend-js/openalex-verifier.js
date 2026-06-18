@@ -38,6 +38,7 @@ function checkAuthorMatch(citationAuthors, foundAuthors) {
     return parts.length ? parts[parts.length - 1] : null;
   }).filter(Boolean);
 
+  if (!citLastnames.length) return true;
   for (const c of citLastnames) {
     for (const f of foundLastnames) {
       if (ratio(c, f) > 85) return true;
@@ -46,55 +47,55 @@ function checkAuthorMatch(citationAuthors, foundAuthors) {
   return false;
 }
 
+const TITLE_MATCH_THRESHOLD = 82;
+
+// Başlık, makalenin var olma sinyali; yazar ise gerçek/sahte ayırt edici asıl sinyaldir.
+// Yıl ve dergi, preprint/konferans/yeniden yayın farklılıkları nedeniyle KESİN red kriteri
+// olarak kullanılmaz; yalnızca bilgilendirici not olarak raporlanır.
 function evaluateOpenAlexWork(work, citationData) {
   const foundTitle = work.title || '';
   if (!foundTitle) return null;
 
   const titleScore = ratio(cleanText(citationData.title), cleanText(foundTitle));
-  if (titleScore < 90) return null;
+  if (titleScore < TITLE_MATCH_THRESHOLD) return null;
 
   const foundAuthors = (work.authorships || []).map(a => a.author?.display_name).filter(Boolean);
   const authorOk = checkAuthorMatch(citationData.authors || [], foundAuthors);
 
   const foundJournal = work.primary_location?.source?.display_name || '';
-  const citationJournal = citationData.journal || '';
-  const journalOk = !citationJournal || !foundJournal || ratio(cleanText(citationJournal), cleanText(foundJournal)) >= 75;
-
   const foundYear = work.publication_year;
+
+  // Yumuşak sinyaller: yalnızca bilgilendirme amaçlı, doğrulamayı engellemez.
+  const citationJournal = citationData.journal || '';
+  const journalSoftOk = !citationJournal || !foundJournal || ratio(cleanText(citationJournal), cleanText(foundJournal)) >= 60;
   const citationYear = citationData.year;
   let yearDiff = null;
-  let yearOk = true;
-  if (citationYear && foundYear) {
-    yearDiff = Math.abs(Number.parseInt(citationYear, 10) - foundYear);
-    yearOk = yearDiff <= 2;
-  }
+  if (citationYear && foundYear) yearDiff = Math.abs(Number.parseInt(citationYear, 10) - foundYear);
 
-  if (authorOk && journalOk && yearOk) {
-    const doi = work.doi || '';
-    const openAccess = work.open_access || {};
-    return {
+  const doi = work.doi || '';
+  const openAccess = work.open_access || {};
+  const baseMeta = {
+    title: foundTitle, journal: foundJournal, year: foundYear,
+    authors: foundAuthors.slice(0, 5),
+    open_access: openAccess.is_oa, oa_url: openAccess.oa_url || null, doi
+  };
+
+  return {
+    titleScore, authorOk, journalSoftOk, yearDiff,
+    verified: {
       source: 'OpenAlex',
       is_verified: true,
       url: doi || work.id || '',
       score: titleScore,
-      found_metadata: {
-        title: foundTitle, journal: foundJournal, year: foundYear,
-        authors: foundAuthors.slice(0, 5),
-        open_access: openAccess.is_oa, oa_url: openAccess.oa_url || null, doi
-      }
-    };
-  }
-
-  const reasons = [];
-  if (!authorOk) reasons.push('Yazar uyuşmazlığı');
-  if (!journalOk) reasons.push('Dergi uyuşmazlığı');
-  if (!yearOk) reasons.push(`Yıl uyuşmazlığı (fark: ${yearDiff} yıl)`);
-
-  return {
-    source: 'OpenAlex (Metadata Uyuşmazlığı)',
-    is_verified: false,
-    note: `Benzer başlık (%${titleScore}) bulundu ancak: ${reasons.join(', ')}`,
-    found_metadata: { title: foundTitle, journal: foundJournal, year: foundYear, authors: foundAuthors.slice(0, 5) }
+      found_metadata: baseMeta
+    },
+    mismatch: {
+      source: 'OpenAlex (Yazar Uyuşmazlığı)',
+      is_verified: false,
+      score: titleScore,
+      note: `Aynı başlıkta makale bulundu (%${titleScore}) ancak yazarlar atıftaki yazarlarla eşleşmiyor.`,
+      found_metadata: baseMeta
+    }
   };
 }
 
@@ -104,16 +105,34 @@ export async function checkOpenalex(citationData) {
 
   try {
     const { data } = await axios.get(OPENALEX_API, {
-      params: { search: title, per_page: 5, mailto: USER_AGENT },
+      params: { search: title, per_page: 10, mailto: USER_AGENT },
       headers: { 'User-Agent': USER_AGENT },
       timeout: REQ_TIMEOUT
     });
 
+    // Tüm başlık-eşleşen adayları topla; ilk uyuşmazlıkta durma.
+    const candidates = [];
     for (const work of data?.results || []) {
-      const result = evaluateOpenAlexWork(work, citationData);
-      if (result) return result;
+      const ev = evaluateOpenAlexWork(work, citationData);
+      if (ev) candidates.push(ev);
     }
-    return null;
+    if (!candidates.length) return null;
+
+    // Yazarı eşleşen adayı tercih et (gerçek makale); en yüksek başlık skoruyla.
+    const authorMatches = candidates.filter(c => c.authorOk);
+    if (authorMatches.length) {
+      authorMatches.sort((a, b) => b.titleScore - a.titleScore);
+      const best = authorMatches[0];
+      const notes = [];
+      if (!best.journalSoftOk) notes.push('dergi adı farklı');
+      if (best.yearDiff !== null && best.yearDiff > 2) notes.push(`yıl farkı ${best.yearDiff} (preprint/yeniden yayın olabilir)`);
+      if (notes.length) best.verified.note = `Doğrulandı. Bilgi: ${notes.join(', ')}.`;
+      return best.verified;
+    }
+
+    // Başlık eşleşiyor ama hiçbir adayda yazar eşleşmiyor: muhtemel uyuşmazlık.
+    candidates.sort((a, b) => b.titleScore - a.titleScore);
+    return candidates[0].mismatch;
   } catch (e) {
     console.warn('[OPENALEX]', e.message);
     return null;
