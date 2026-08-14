@@ -82,6 +82,8 @@ npm run dev
 
 Tarayıcıda `http://localhost:5173` (veya Vite'ın gösterdiği adres) açılır. Frontend varsayılan olarak `http://127.0.0.1:8000` adresindeki backend'e bağlanır.
 
+ya da direkt BASLAT.bat çalıştırılır.
+
 ## Kullanım
 
 1. PDF veya DOCX dosyası yükleyin (maks. 15 MB), ya da metni doğrudan yapıştırın.
