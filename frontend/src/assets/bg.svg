@@ -1,0 +1,1100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" overflow="hidden" aria-hidden="true">
+
+  <style>
+@keyframes vayro-scatter-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(53.21px, 37.17px); }
+}
+.vayro-scatter-drift-1 {
+  animation: vayro-scatter-drift-1 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-5.031s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(68.54px, -15.30px); }
+}
+.vayro-scatter-drift-2 {
+  animation: vayro-scatter-drift-2 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.279s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-28.02px, -42.50px); }
+}
+.vayro-scatter-drift-3 {
+  animation: vayro-scatter-drift-3 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-0.779s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-4 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(63.12px, 36.03px); }
+}
+.vayro-scatter-drift-4 {
+  animation: vayro-scatter-drift-4 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-1.383s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-5 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-13.73px, 48.39px); }
+}
+.vayro-scatter-drift-5 {
+  animation: vayro-scatter-drift-5 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.149s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-6 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-35.49px, 31.69px); }
+}
+.vayro-scatter-drift-6 {
+  animation: vayro-scatter-drift-6 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-7.471s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-7 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(2.62px, 67.54px); }
+}
+.vayro-scatter-drift-7 {
+  animation: vayro-scatter-drift-7 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-3.190s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-8 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(58.11px, -0.75px); }
+}
+.vayro-scatter-drift-8 {
+  animation: vayro-scatter-drift-8 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-4.992s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-9 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-69.49px, -21.46px); }
+}
+.vayro-scatter-drift-9 {
+  animation: vayro-scatter-drift-9 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-7.681s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-10 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(47.09px, -22.38px); }
+}
+.vayro-scatter-drift-10 {
+  animation: vayro-scatter-drift-10 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-4.394s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-11 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(28.93px, 40.16px); }
+}
+.vayro-scatter-drift-11 {
+  animation: vayro-scatter-drift-11 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-0.657s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-12 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(24.10px, -39.38px); }
+}
+.vayro-scatter-drift-12 {
+  animation: vayro-scatter-drift-12 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-5.617s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-13 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(39.86px, 18.76px); }
+}
+.vayro-scatter-drift-13 {
+  animation: vayro-scatter-drift-13 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.502s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-14 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-29.05px, 61.04px); }
+}
+.vayro-scatter-drift-14 {
+  animation: vayro-scatter-drift-14 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.524s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-15 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(45.24px, -13.31px); }
+}
+.vayro-scatter-drift-15 {
+  animation: vayro-scatter-drift-15 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-6.514s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-16 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(5.23px, 46.55px); }
+}
+.vayro-scatter-drift-16 {
+  animation: vayro-scatter-drift-16 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-4.771s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-17 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-11.23px, 50.41px); }
+}
+.vayro-scatter-drift-17 {
+  animation: vayro-scatter-drift-17 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-0.622s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-18 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(58.63px, -38.27px); }
+}
+.vayro-scatter-drift-18 {
+  animation: vayro-scatter-drift-18 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-1.692s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-19 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(32.57px, 33.91px); }
+}
+.vayro-scatter-drift-19 {
+  animation: vayro-scatter-drift-19 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-0.012s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-20 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(2.82px, 62.66px); }
+}
+.vayro-scatter-drift-20 {
+  animation: vayro-scatter-drift-20 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-3.765s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-21 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(37.95px, 55.19px); }
+}
+.vayro-scatter-drift-21 {
+  animation: vayro-scatter-drift-21 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-7.990s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-22 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-49.85px, 4.54px); }
+}
+.vayro-scatter-drift-22 {
+  animation: vayro-scatter-drift-22 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-3.415s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-23 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(3.81px, -65.52px); }
+}
+.vayro-scatter-drift-23 {
+  animation: vayro-scatter-drift-23 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.490s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-24 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(37.76px, 44.69px); }
+}
+.vayro-scatter-drift-24 {
+  animation: vayro-scatter-drift-24 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-1.650s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-25 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(1.19px, 62.47px); }
+}
+.vayro-scatter-drift-25 {
+  animation: vayro-scatter-drift-25 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-7.375s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-26 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-42.89px, -20.94px); }
+}
+.vayro-scatter-drift-26 {
+  animation: vayro-scatter-drift-26 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-4.163s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-27 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-7.73px, -67.95px); }
+}
+.vayro-scatter-drift-27 {
+  animation: vayro-scatter-drift-27 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.995s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-28 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(33.82px, 62.46px); }
+}
+.vayro-scatter-drift-28 {
+  animation: vayro-scatter-drift-28 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-6.334s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-29 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-10.27px, 45.01px); }
+}
+.vayro-scatter-drift-29 {
+  animation: vayro-scatter-drift-29 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-5.639s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-30 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-49.27px, -37.24px); }
+}
+.vayro-scatter-drift-30 {
+  animation: vayro-scatter-drift-30 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-3.632s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-31 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(49.60px, 9.87px); }
+}
+.vayro-scatter-drift-31 {
+  animation: vayro-scatter-drift-31 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-5.000s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-32 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-65.93px, 31.65px); }
+}
+.vayro-scatter-drift-32 {
+  animation: vayro-scatter-drift-32 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-6.932s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-33 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(34.59px, 30.52px); }
+}
+.vayro-scatter-drift-33 {
+  animation: vayro-scatter-drift-33 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-6.791s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-34 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(61.83px, 9.53px); }
+}
+.vayro-scatter-drift-34 {
+  animation: vayro-scatter-drift-34 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-3.556s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-35 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-44.87px, 14.47px); }
+}
+.vayro-scatter-drift-35 {
+  animation: vayro-scatter-drift-35 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-3.365s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-36 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-9.18px, -65.18px); }
+}
+.vayro-scatter-drift-36 {
+  animation: vayro-scatter-drift-36 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-6.123s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-37 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-26.01px, -52.58px); }
+}
+.vayro-scatter-drift-37 {
+  animation: vayro-scatter-drift-37 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-5.134s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-38 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-62.01px, 7.50px); }
+}
+.vayro-scatter-drift-38 {
+  animation: vayro-scatter-drift-38 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-0.407s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-39 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-52.16px, -28.91px); }
+}
+.vayro-scatter-drift-39 {
+  animation: vayro-scatter-drift-39 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.281s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-drift-40 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-71.24px, -8.34px); }
+}
+.vayro-scatter-drift-40 {
+  animation: vayro-scatter-drift-40 calc(12.000s * var(--vayro-scatter-speed, 1)) ease-in-out infinite;
+  animation-delay: calc(-2.888s * var(--vayro-scatter-speed, 1));
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-1 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-1 {
+  animation: vayro-scatter-rotate-1 11.816s linear infinite;
+  animation-delay: -2.515s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-2 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-2 {
+  animation: vayro-scatter-rotate-2 11.042s linear infinite;
+  animation-delay: -1.140s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-3 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-3 {
+  animation: vayro-scatter-rotate-3 9.288s linear infinite;
+  animation-delay: -0.389s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-4 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-4 {
+  animation: vayro-scatter-rotate-4 17.494s linear infinite;
+  animation-delay: -0.692s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-5 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-5 {
+  animation: vayro-scatter-rotate-5 4.919s linear infinite;
+  animation-delay: -1.074s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-6 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-6 {
+  animation: vayro-scatter-rotate-6 10.555s linear infinite;
+  animation-delay: -3.735s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-7 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-7 {
+  animation: vayro-scatter-rotate-7 10.675s linear infinite;
+  animation-delay: -1.595s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-8 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-8 {
+  animation: vayro-scatter-rotate-8 12.246s linear infinite;
+  animation-delay: -2.496s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-9 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-9 {
+  animation: vayro-scatter-rotate-9 15.855s linear infinite;
+  animation-delay: -3.841s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-10 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-10 {
+  animation: vayro-scatter-rotate-10 15.320s linear infinite;
+  animation-delay: -2.197s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-11 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-11 {
+  animation: vayro-scatter-rotate-11 15.298s linear infinite;
+  animation-delay: -0.329s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-12 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-12 {
+  animation: vayro-scatter-rotate-12 10.193s linear infinite;
+  animation-delay: -2.809s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-13 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-13 {
+  animation: vayro-scatter-rotate-13 14.518s linear infinite;
+  animation-delay: -1.251s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-14 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-14 {
+  animation: vayro-scatter-rotate-14 10.310s linear infinite;
+  animation-delay: -1.262s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-15 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-15 {
+  animation: vayro-scatter-rotate-15 4.324s linear infinite;
+  animation-delay: -3.257s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-16 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-16 {
+  animation: vayro-scatter-rotate-16 13.713s linear infinite;
+  animation-delay: -2.385s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-17 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-17 {
+  animation: vayro-scatter-rotate-17 14.909s linear infinite;
+  animation-delay: -0.311s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-18 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-18 {
+  animation: vayro-scatter-rotate-18 9.438s linear infinite;
+  animation-delay: -0.846s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-19 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-19 {
+  animation: vayro-scatter-rotate-19 18.894s linear infinite;
+  animation-delay: -0.006s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-20 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-20 {
+  animation: vayro-scatter-rotate-20 17.948s linear infinite;
+  animation-delay: -1.883s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-21 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-21 {
+  animation: vayro-scatter-rotate-21 18.882s linear infinite;
+  animation-delay: -3.995s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-22 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-22 {
+  animation: vayro-scatter-rotate-22 6.717s linear infinite;
+  animation-delay: -1.708s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-23 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-23 {
+  animation: vayro-scatter-rotate-23 11.236s linear infinite;
+  animation-delay: -1.245s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-24 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-24 {
+  animation: vayro-scatter-rotate-24 18.067s linear infinite;
+  animation-delay: -0.825s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-25 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-25 {
+  animation: vayro-scatter-rotate-25 8.257s linear infinite;
+  animation-delay: -3.687s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-26 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-26 {
+  animation: vayro-scatter-rotate-26 9.223s linear infinite;
+  animation-delay: -2.081s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-27 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-27 {
+  animation: vayro-scatter-rotate-27 5.644s linear infinite;
+  animation-delay: -1.497s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-28 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-28 {
+  animation: vayro-scatter-rotate-28 17.366s linear infinite;
+  animation-delay: -3.167s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-29 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-29 {
+  animation: vayro-scatter-rotate-29 5.886s linear infinite;
+  animation-delay: -2.820s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-30 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-30 {
+  animation: vayro-scatter-rotate-30 8.458s linear infinite;
+  animation-delay: -1.816s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-31 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-31 {
+  animation: vayro-scatter-rotate-31 18.813s linear infinite;
+  animation-delay: -2.500s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-32 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-32 {
+  animation: vayro-scatter-rotate-32 16.557s linear infinite;
+  animation-delay: -3.466s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-33 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-33 {
+  animation: vayro-scatter-rotate-33 10.896s linear infinite;
+  animation-delay: -3.396s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-34 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-34 {
+  animation: vayro-scatter-rotate-34 10.186s linear infinite;
+  animation-delay: -1.778s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-35 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-35 {
+  animation: vayro-scatter-rotate-35 9.598s linear infinite;
+  animation-delay: -1.683s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-36 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-36 {
+  animation: vayro-scatter-rotate-36 7.520s linear infinite;
+  animation-delay: -3.062s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-37 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-37 {
+  animation: vayro-scatter-rotate-37 12.130s linear infinite;
+  animation-delay: -2.567s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-38 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-38 {
+  animation: vayro-scatter-rotate-38 8.127s linear infinite;
+  animation-delay: -0.204s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-39 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-39 {
+  animation: vayro-scatter-rotate-39 11.256s linear infinite;
+  animation-delay: -1.141s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes vayro-scatter-rotate-40 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vayro-scatter-rotate-40 {
+  animation: vayro-scatter-rotate-40 12.848s linear infinite;
+  animation-delay: -1.444s;
+  animation-play-state: var(--vayro-scatter-play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="vayro-scatter-float-"],
+  [class*="vayro-scatter-pulse-"],
+  [class*="vayro-scatter-drift-"],
+  [class*="vayro-scatter-rotate-"] {
+    animation: none !important;
+  }
+}
+
+  </style>
+  <defs>
+    <clipPath id="vayro-scatter-clip"><rect width="1920" height="1080"/></clipPath>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="#040D1A"/>
+  <g clip-path="url(#vayro-scatter-clip)">
+    <g transform="translate(132.74 164.59) rotate(343.73)"><g class="vayro-scatter-shape vayro-scatter-shape-1 vayro-scatter-drift-1 vayro-scatter-rotate-1"><circle cx="0" cy="0" r="41.72" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="3.34" stroke-linejoin="round"/></g></g>
+    <g transform="translate(291.68 92.85) rotate(346.13)"><g class="vayro-scatter-shape vayro-scatter-shape-2 vayro-scatter-drift-2 vayro-scatter-rotate-2"><path d="M 0 -16.68 L 14.44 8.34 L -14.44 8.34 Z" fill="none" stroke="#8B5CF6" stroke-opacity="0.900" stroke-width="1.33" stroke-linejoin="round"/></g></g>
+    <g transform="translate(521.11 171.37) rotate(300.46)"><g class="vayro-scatter-shape vayro-scatter-shape-3 vayro-scatter-drift-3 vayro-scatter-rotate-3"><rect x="-11.20" y="-11.20" width="22.39" height="22.39" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="1.00" stroke-linejoin="round"/></g></g>
+    <g transform="translate(882.15 75.38) rotate(142.79)"><g class="vayro-scatter-shape vayro-scatter-shape-4 vayro-scatter-drift-4 vayro-scatter-rotate-4"><path d="M 0.00 -16.44 L 15.64 -5.08 L 9.67 13.30 L -9.67 13.30 L -15.64 -5.08 Z" fill="none" stroke="#8B5CF6" stroke-opacity="0.900" stroke-width="1.32" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1099.10 132.56) rotate(271.35)"><g class="vayro-scatter-shape vayro-scatter-shape-5 vayro-scatter-drift-5 vayro-scatter-rotate-5"><path d="M 29.60 0.00 L 14.80 25.64 L -14.80 25.64 L -29.60 0.00 L -14.80 -25.64 L 14.80 -25.64 Z" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1277.02 148.87) rotate(80.79)"><g class="vayro-scatter-shape vayro-scatter-shape-6 vayro-scatter-drift-6 vayro-scatter-rotate-6"><path d="M 0.00 -34.35 L 8.08 -11.12 L 32.67 -10.62 L 13.07 4.25 L 20.19 27.79 L 0.00 13.74 L -20.19 27.79 L -13.07 4.25 L -32.67 -10.62 L -8.08 -11.12 Z" fill="none" stroke="#8B5CF6" stroke-opacity="0.900" stroke-width="2.75" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1547.71 52.35) rotate(349.65)"><g class="vayro-scatter-shape vayro-scatter-shape-7 vayro-scatter-drift-7 vayro-scatter-rotate-7"><path d="M 0 -38.88 L 38.88 0 L 0 38.88 L -38.88 0 Z" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="3.11" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1767.84 118.86) rotate(97.41)"><g class="vayro-scatter-shape vayro-scatter-shape-8 vayro-scatter-drift-8 vayro-scatter-rotate-8"><path d="M 17.28 7.16 L 7.16 17.28 L -7.16 17.28 L -17.28 7.16 L -17.28 -7.16 L -7.16 -17.28 L 7.16 -17.28 L 17.28 -7.16 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(203.15 381.98) rotate(241.67)"><g class="vayro-scatter-shape vayro-scatter-shape-9 vayro-scatter-drift-9 vayro-scatter-rotate-9"><circle cx="0" cy="0" r="30.57" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="2.45" stroke-linejoin="round"/></g></g>
+    <g transform="translate(412.06 252.72) rotate(222.58)"><g class="vayro-scatter-shape vayro-scatter-shape-10 vayro-scatter-drift-10 vayro-scatter-rotate-10"><path d="M 0 -15.18 L 13.15 7.59 L -13.15 7.59 Z" fill="none" stroke="#8B5CF6" stroke-opacity="0.900" stroke-width="1.21" stroke-linejoin="round"/></g></g>
+    <g transform="translate(507.30 317.24) rotate(154.06)"><g class="vayro-scatter-shape vayro-scatter-shape-11 vayro-scatter-drift-11 vayro-scatter-rotate-11"><rect x="-12.90" y="-12.90" width="25.80" height="25.80" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(807.29 264.96) rotate(328.46)"><g class="vayro-scatter-shape vayro-scatter-shape-12 vayro-scatter-drift-12 vayro-scatter-rotate-12"><path d="M 0.00 -31.56 L 30.02 -9.75 L 18.55 25.53 L -18.55 25.53 L -30.02 -9.75 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1003.40 330.93) rotate(172.58)"><g class="vayro-scatter-shape vayro-scatter-shape-13 vayro-scatter-drift-13 vayro-scatter-rotate-13"><path d="M 11.16 0.00 L 5.58 9.67 L -5.58 9.67 L -11.16 0.00 L -5.58 -9.67 L 5.58 -9.67 Z" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="1.00" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1386.89 323.21) rotate(188.58)"><g class="vayro-scatter-shape vayro-scatter-shape-14 vayro-scatter-drift-14 vayro-scatter-rotate-14"><path d="M 0.00 -34.38 L 8.08 -11.13 L 32.70 -10.62 L 13.08 4.25 L 20.21 27.81 L 0.00 13.75 L -20.21 27.81 L -13.08 4.25 L -32.70 -10.62 L -8.08 -11.13 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1534.56 288.01) rotate(188.09)"><g class="vayro-scatter-shape vayro-scatter-shape-15 vayro-scatter-drift-15 vayro-scatter-rotate-15"><path d="M 0 -37.58 L 37.58 0 L 0 37.58 L -37.58 0 Z" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="3.01" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1863.79 382.79) rotate(2.26)"><g class="vayro-scatter-shape vayro-scatter-shape-16 vayro-scatter-drift-16 vayro-scatter-rotate-16"><path d="M 15.70 6.50 L 6.50 15.70 L -6.50 15.70 L -15.70 6.50 L -15.70 -6.50 L -6.50 -15.70 L 6.50 -15.70 L 15.70 -6.50 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(90.04 507.53) rotate(30.36)"><g class="vayro-scatter-shape vayro-scatter-shape-17 vayro-scatter-drift-17 vayro-scatter-rotate-17"><circle cx="0" cy="0" r="26.53" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(285.09 475.16) rotate(174.23)"><g class="vayro-scatter-shape vayro-scatter-shape-18 vayro-scatter-drift-18 vayro-scatter-rotate-18"><path d="M 0 -20.05 L 17.37 10.03 L -17.37 10.03 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(639.74 468.88) rotate(308.21)"><g class="vayro-scatter-shape vayro-scatter-shape-19 vayro-scatter-drift-19 vayro-scatter-rotate-19"><rect x="-11.32" y="-11.32" width="22.65" height="22.65" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="1.00" stroke-linejoin="round"/></g></g>
+    <g transform="translate(872.24 499.70) rotate(140.87)"><g class="vayro-scatter-shape vayro-scatter-shape-20 vayro-scatter-drift-20 vayro-scatter-rotate-20"><path d="M 0.00 -32.05 L 30.48 -9.90 L 18.84 25.93 L -18.84 25.93 L -30.48 -9.90 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1026.06 490.83) rotate(87.22)"><g class="vayro-scatter-shape vayro-scatter-shape-21 vayro-scatter-drift-21 vayro-scatter-rotate-21"><path d="M 32.09 0.00 L 16.05 27.79 L -16.05 27.79 L -32.09 0.00 L -16.05 -27.79 L 16.05 -27.79 Z" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="2.57" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1234.47 625.10) rotate(178.84)"><g class="vayro-scatter-shape vayro-scatter-shape-22 vayro-scatter-drift-22 vayro-scatter-rotate-22"><path d="M 0.00 -27.49 L 6.46 -8.89 L 26.14 -8.49 L 10.46 3.40 L 16.16 22.24 L 0.00 10.99 L -16.16 22.24 L -10.46 3.40 L -26.14 -8.49 L -6.46 -8.89 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1533.65 515.09) rotate(156.50)"><g class="vayro-scatter-shape vayro-scatter-shape-23 vayro-scatter-drift-23 vayro-scatter-rotate-23"><path d="M 0 -17.78 L 17.78 0 L 0 17.78 L -17.78 0 Z" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1716.38 457.64) rotate(43.23)"><g class="vayro-scatter-shape vayro-scatter-shape-24 vayro-scatter-drift-24 vayro-scatter-rotate-24"><path d="M 14.41 5.97 L 5.97 14.41 L -5.97 14.41 L -14.41 5.97 L -14.41 -5.97 L -5.97 -14.41 L 5.97 -14.41 L 14.41 -5.97 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(149.70 804.82) rotate(155.33)"><g class="vayro-scatter-shape vayro-scatter-shape-25 vayro-scatter-drift-25 vayro-scatter-rotate-25"><circle cx="0" cy="0" r="13.98" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(321.73 740.16) rotate(98.93)"><g class="vayro-scatter-shape vayro-scatter-shape-26 vayro-scatter-drift-26 vayro-scatter-rotate-26"><path d="M 0 -37.22 L 32.23 18.61 L -32.23 18.61 Z" fill="none" stroke="#8B5CF6" stroke-opacity="0.900" stroke-width="2.98" stroke-linejoin="round"/></g></g>
+    <g transform="translate(511.50 829.72) rotate(205.86)"><g class="vayro-scatter-shape vayro-scatter-shape-27 vayro-scatter-drift-27 vayro-scatter-rotate-27"><rect x="-13.43" y="-13.43" width="26.85" height="26.85" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="1.07" stroke-linejoin="round"/></g></g>
+    <g transform="translate(927.90 759.73) rotate(162.97)"><g class="vayro-scatter-shape vayro-scatter-shape-28 vayro-scatter-drift-28 vayro-scatter-rotate-28"><path d="M 0.00 -35.10 L 33.38 -10.85 L 20.63 28.40 L -20.63 28.40 L -33.38 -10.85 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1066.57 735.02) rotate(96.83)"><g class="vayro-scatter-shape vayro-scatter-shape-29 vayro-scatter-drift-29 vayro-scatter-rotate-29"><path d="M 38.94 0.00 L 19.47 33.72 L -19.47 33.72 L -38.94 0.00 L -19.47 -33.72 L 19.47 -33.72 Z" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1398.01 702.58) rotate(282.90)"><g class="vayro-scatter-shape vayro-scatter-shape-30 vayro-scatter-drift-30 vayro-scatter-rotate-30"><path d="M 0.00 -34.21 L 8.04 -11.07 L 32.53 -10.57 L 13.01 4.23 L 20.11 27.67 L 0.00 13.68 L -20.11 27.67 L -13.01 4.23 L -32.53 -10.57 L -8.04 -11.07 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1566.80 809.57) rotate(294.17)"><g class="vayro-scatter-shape vayro-scatter-shape-31 vayro-scatter-drift-31 vayro-scatter-rotate-31"><path d="M 0 -20.91 L 20.91 0 L 0 20.91 L -20.91 0 Z" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1875.10 803.06) rotate(171.92)"><g class="vayro-scatter-shape vayro-scatter-shape-32 vayro-scatter-drift-32 vayro-scatter-rotate-32"><path d="M 29.92 12.39 L 12.39 29.92 L -12.39 29.92 L -29.92 12.39 L -29.92 -12.39 L -12.39 -29.92 L 12.39 -29.92 L 29.92 -12.39 Z" fill="none" stroke="#8B5CF6" stroke-opacity="0.900" stroke-width="2.59" stroke-linejoin="round"/></g></g>
+    <g transform="translate(165.69 990.81) rotate(75.85)"><g class="vayro-scatter-shape vayro-scatter-shape-33 vayro-scatter-drift-33 vayro-scatter-rotate-33"><circle cx="0" cy="0" r="37.09" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="2.97" stroke-linejoin="round"/></g></g>
+    <g transform="translate(444.42 947.50) rotate(239.92)"><g class="vayro-scatter-shape vayro-scatter-shape-34 vayro-scatter-drift-34 vayro-scatter-rotate-34"><path d="M 0 -18.25 L 15.80 9.12 L -15.80 9.12 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(640.28 1038.56) rotate(236.44)"><g class="vayro-scatter-shape vayro-scatter-shape-35 vayro-scatter-drift-35 vayro-scatter-rotate-35"><rect x="-26.24" y="-26.24" width="52.48" height="52.48" fill="#06B6D4" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(891.75 1004.85) rotate(108.62)"><g class="vayro-scatter-shape vayro-scatter-shape-36 vayro-scatter-drift-36 vayro-scatter-rotate-36"><path d="M 0.00 -21.74 L 20.68 -6.72 L 12.78 17.59 L -12.78 17.59 L -20.68 -6.72 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1151.61 980.54) rotate(22.45)"><g class="vayro-scatter-shape vayro-scatter-shape-37 vayro-scatter-drift-37 vayro-scatter-rotate-37"><path d="M 30.91 0.00 L 15.45 26.76 L -15.45 26.76 L -30.91 0.00 L -15.45 -26.76 L 15.45 -26.76 Z" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="2.47" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1284.98 1020.39) rotate(320.96)"><g class="vayro-scatter-shape vayro-scatter-shape-38 vayro-scatter-drift-38 vayro-scatter-rotate-38"><path d="M 0.00 -24.33 L 5.72 -7.87 L 23.13 -7.52 L 9.25 3.01 L 14.30 19.68 L 0.00 9.73 L -14.30 19.68 L -9.25 3.01 L -23.13 -7.52 L -5.72 -7.87 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+    <g transform="translate(1567.31 983.31) rotate(294.37)"><g class="vayro-scatter-shape vayro-scatter-shape-39 vayro-scatter-drift-39 vayro-scatter-rotate-39"><path d="M 0 -14.37 L 14.37 0 L 0 14.37 L -14.37 0 Z" fill="none" stroke="#06B6D4" stroke-opacity="0.900" stroke-width="1.15" stroke-linejoin="round"/></g></g>
+    <g transform="translate(1746.20 1001.41) rotate(308.04)"><g class="vayro-scatter-shape vayro-scatter-shape-40 vayro-scatter-drift-40 vayro-scatter-rotate-40"><path d="M 17.93 7.43 L 7.43 17.93 L -7.43 17.93 L -17.93 7.43 L -17.93 -7.43 L -7.43 -17.93 L 7.43 -17.93 L 17.93 -7.43 Z" fill="#8B5CF6" fill-opacity="0.900" stroke="none"/></g></g>
+  </g>
+</svg>

@@ -91,7 +91,7 @@ function App() {
   return (
     <div className="container">
       <header className="header">
-        <h1>🔍 TÜBİTAK Atıf Doğrulayıcı</h1>
+        <h1>🔍 Atıf Doğrulayıcı</h1>
         <p>DOI, ISBN, ISSN, Web ve Gri Literatür Doğrulama</p>
       </header>
 
@@ -116,14 +116,18 @@ function App() {
         <div className="upload-section">
           {activeTab === 'file' ? (
             <div className="file-input-wrapper">
-              <input
-                className="file-input"
-                type="file"
-                accept=".pdf,.docx"
-                onChange={handleFileChange}
-                disabled={loading}
-              />
-              <p className="hint">📎 PDF, DOCX (Max 15MB)</p>
+              <label className="dropzone-label">
+                <div className="icon">📄</div>
+                <div style={{fontWeight: 600, color: "var(--text-main)", marginBottom: 5}}>Dosya Seçin veya Sürükleyin</div>
+                <p className="hint">PDF veya DOCX (Max 15MB)</p>
+                <input
+                  className="file-input"
+                  type="file"
+                  accept=".pdf,.docx"
+                  onChange={handleFileChange}
+                  disabled={loading}
+                />
+              </label>
               {file && (
                 <div className="file-info">
                   <span className="file-name">✓ {file.name}</span>
